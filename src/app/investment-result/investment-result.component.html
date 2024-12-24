@@ -1,0 +1,26 @@
+@if(investmentResults){
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Investment Value</th>
+                <th>Interest (Year)</th>
+                <th>Total Interest</th>
+                <th>Invested Capital</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (record of investmentResults; track record.year) {
+            <tr>
+                <td>{{ record.year }}</td>
+                <td>{{ record.valueEndOfYear| currency:'INR':'symbol':'1.2-2' }}</td>
+                <td>{{ record.interest | currency:'INR':'symbol':'1.2-2' }}</td>
+                <td>{{ record.totalInterest | currency:'INR':'symbol':'1.2-2' }}</td>
+                <td>{{ record.totalAmountInvested| currency:'INR':'symbol':'1.2-2' }}</td>
+            </tr>
+            }
+    
+    </table>
+} @else {
+    <div style="text-align: center;">There are no results to display.</div>
+}
